@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('frontend.homepage');
+        $all_posts= Post::latest()->get();
+        return view('frontend.homepage', compact('all_posts'));
     }
 
 
